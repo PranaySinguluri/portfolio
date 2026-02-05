@@ -2,6 +2,10 @@
 
 A professional portfolio website showcasing the skills and experience of Pranay Singuluri, a Full Stack Developer with 6 years of experience in React.js, Spring Boot, and AI/ML integration.
 
+## 🌐 Live Demo
+
+Visit the live website: **[https://pranaysinguluri.github.io/portfolio/](https://pranaysinguluri.github.io/portfolio/)**
+
 ## 🚀 Features
 
 - **Modern Tech Stack**: Built with React.js, TypeScript, and Material UI
@@ -86,7 +90,35 @@ npm run preview
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### Automated GitHub Pages Deployment
+
+This repository is configured with **automated CI/CD deployment** to GitHub Pages. The site automatically deploys when changes are pushed to the `main` branch.
+
+**Live URL**: [https://pranaysinguluri.github.io/portfolio/](https://pranaysinguluri.github.io/portfolio/)
+
+#### How It Works
+
+1. **Automatic Builds**: A GitHub Actions workflow (`.github/workflows/deploy.yml`) triggers on every push to `main`
+2. **Build Process**: 
+   - Sets up Node.js 20
+   - Installs dependencies with caching for faster builds
+   - Runs TypeScript compilation and Vite build
+   - Generates optimized production assets in the `dist` directory
+3. **Deployment**: Automatically deploys the built site to GitHub Pages
+4. **Access**: The site becomes available at the GitHub Pages URL within minutes
+
+#### Deployment Configuration
+
+The repository is configured for GitHub Pages deployment with:
+- **Base URL**: `/portfolio/` (configured in `vite.config.ts`)
+- **Build Output**: `dist` directory
+- **Node Version**: 20 (LTS)
+- **Permissions**: Configured for GitHub Pages write access
+- **Jekyll**: Disabled via `.nojekyll` file
+
+#### Manual Deployment (Alternative)
+
+If you prefer manual deployment:
 
 1. Update `vite.config.ts` with your repository name:
 ```typescript

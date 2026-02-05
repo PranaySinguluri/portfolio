@@ -24,18 +24,39 @@ The production build will be in the `dist` directory.
 
 ### 1. GitHub Pages (Recommended)
 
-#### Automatic Deployment (CI/CD)
+**Live URL**: [https://pranaysinguluri.github.io/portfolio/](https://pranaysinguluri.github.io/portfolio/)
 
-The repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages when you push to the `main` branch.
+#### Automatic Deployment (CI/CD) - ✅ Already Configured
 
-**Setup Steps:**
+The repository includes a **fully automated GitHub Actions workflow** that deploys to GitHub Pages on every push to the `main` branch.
 
-1. Go to your repository Settings → Pages
-2. Under "Build and deployment":
-   - Source: Select "GitHub Actions"
-3. Push your code to the `main` branch
-4. The workflow will automatically build and deploy your site
-5. Your site will be available at: `https://[username].github.io/portfolio/`
+**How It Works:**
+
+1. **Workflow File**: `.github/workflows/deploy.yml` contains the complete CI/CD pipeline
+2. **Trigger**: Automatically runs when you push commits to the `main` branch
+3. **Build Process**:
+   - Checks out code
+   - Sets up Node.js 20 with dependency caching
+   - Installs dependencies with `npm ci`
+   - Runs `npm run build` to create production build
+   - Uploads build artifacts
+4. **Deployment**: Automatically deploys to GitHub Pages
+5. **Result**: Site is live at `https://pranaysinguluri.github.io/portfolio/` within a few minutes
+
+**Setup Instructions:**
+
+1. Ensure GitHub Pages is enabled in repository Settings → Pages
+2. Set "Build and deployment" source to "GitHub Actions"
+3. Push your changes to the `main` branch
+4. The workflow runs automatically - check the "Actions" tab to monitor progress
+5. Once complete, your site is live!
+
+**Configuration Details:**
+- Base URL: `/portfolio/` (set in `vite.config.ts`)
+- Build output: `dist` directory
+- Node version: 20
+- Dependencies: Cached for faster subsequent builds
+- Jekyll: Disabled via `.nojekyll` file
 
 #### Manual Deployment
 
