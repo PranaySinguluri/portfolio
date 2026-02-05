@@ -1,0 +1,10 @@
+Place your resume PDF file named "resume.pdf" in this public directory.
+
+The resume should include:
+- Full name: NAGA VENKATA PRANAY SINGULURI
+- Contact information
+- Professional experience
+- Education credentials
+- Skills and expertise
+
+Once you add your actual resume.pdf file, users will be able to download it from the portfolio website.
