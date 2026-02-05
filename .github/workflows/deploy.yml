@@ -47,7 +47,7 @@ jobs:
             });
             
             for (const artifact of artifacts.data.artifacts) {
-              if (artifact.name === 'github-pages' && artifact.workflow_run.id !== context.runId) {
+              if (artifact.name === 'github-pages' && artifact.workflow_run.id !== Number(context.runId)) {
                 console.log(`Deleting artifact ${artifact.id} (${artifact.name}) from run ${artifact.workflow_run.id}`);
                 try {
                   await github.rest.actions.deleteArtifact({
