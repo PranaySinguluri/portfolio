@@ -44,7 +44,7 @@ const experiences = [
     location: 'Philadelphia, USA',
     duration: 'Jan 2023 – Jun 2024',
     achievements: [
-      'Led React.js dashboard design (25% improvement in team collaboration)',
+      'Led React.js dashboard design (25% improvement)',
       'Developed microservices with Spring Boot for scalable architecture',
       'Integrated Apache Kafka for real-time data communication',
       'Optimized MSSQL queries (30% faster data retrieval)',
