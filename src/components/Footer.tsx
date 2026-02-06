@@ -1,5 +1,8 @@
 import { Box, Container, Typography, Stack, IconButton, Divider } from '@mui/material';
 import { LinkedIn, GitHub, Email, KeyboardArrowUp } from '@mui/icons-material';
+import { motion } from 'framer-motion';
+
+const MotionBox = motion(Box);
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -18,6 +21,12 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
+        <MotionBox
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
         <Stack spacing={4}>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -96,11 +105,15 @@ const Footer = () => {
             </Typography>
           </Stack>
         </Stack>
+        </MotionBox>
       </Container>
 
       {/* Back to Top Button */}
-      <IconButton
+      <MotionBox
+        component={IconButton}
         onClick={scrollToTop}
+        whileHover={{ scale: 1.1, y: -4 }}
+        whileTap={{ scale: 0.95 }}
         sx={{
           position: 'fixed',
           bottom: 32,
@@ -109,14 +122,13 @@ const Footer = () => {
           color: 'white',
           '&:hover': {
             backgroundColor: 'primary.dark',
-            transform: 'translateY(-4px)',
           },
-          transition: 'all 0.3s',
+          transition: 'background-color 0.3s',
           boxShadow: 3,
         }}
       >
         <KeyboardArrowUp />
-      </IconButton>
+      </MotionBox>
     </Box>
   );
 };
