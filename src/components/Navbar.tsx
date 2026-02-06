@@ -27,6 +27,9 @@ import {
   FolderSpecial,
   ContactMail,
 } from '@mui/icons-material';
+import { motion } from 'framer-motion';
+
+const MotionButton = motion(Button);
 
 interface NavbarProps {
   darkMode: boolean;
@@ -124,10 +127,15 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 
           {!isMobile && (
             <Box sx={{ display: 'flex', gap: 1 }}>
-              {menuItems.map((item) => (
-                <Button
+              {menuItems.map((item, index) => (
+                <MotionButton
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   sx={{
                     color: trigger
                       ? 'text.primary'
@@ -140,7 +148,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
                   }}
                 >
                   {item.label}
-                </Button>
+                </MotionButton>
               ))}
             </Box>
           )}
