@@ -5,6 +5,15 @@ import { motion } from 'framer-motion';
 const MotionBox = motion(Box);
 const MotionTypography = motion(Typography);
 
+const floatingParticles = Array.from({ length: 15 }, (_, i) => ({
+  id: i,
+  size: Math.random() * 6 + 2,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  duration: Math.random() * 10 + 10,
+  delay: Math.random() * 5,
+}));
+
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -50,6 +59,34 @@ const Hero = () => {
         }}
       />
 
+      {/* Floating particles */}
+      {floatingParticles.map((particle) => (
+        <MotionBox
+          key={particle.id}
+          sx={{
+            position: 'absolute',
+            width: particle.size,
+            height: particle.size,
+            borderRadius: '50%',
+            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            pointerEvents: 'none',
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, 15, 0],
+            opacity: [0.2, 0.6, 0.2],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
       <Container maxWidth="lg">
         <MotionBox
           initial={{ opacity: 0, y: 30 }}
@@ -91,6 +128,15 @@ const Hero = () => {
               sx={{
                 color: 'rgba(255, 255, 255, 0.95)',
                 fontWeight: 500,
+                '&::after': {
+                  content: '"|"',
+                  animation: 'blink 1s step-end infinite',
+                  marginLeft: '2px',
+                },
+                '@keyframes blink': {
+                  '0%, 100%': { opacity: 1 },
+                  '50%': { opacity: 0 },
+                },
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
